@@ -3,7 +3,7 @@ from django.apps import AppConfig
 
 
 class DjhexdiConfig(AppConfig):
-    name = 'djhexdi'
+    name = 'hexdi'
 
     def ready(self):
         from djhexdi import settings
