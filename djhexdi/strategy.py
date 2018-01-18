@@ -23,7 +23,7 @@ class Static(AbstractStrategy):
         file = settings.HEXDI_MODULE
         if file:
             _module = load_module(file)
-            modules.extend(_module.get(settings.HEXDI_MODULES_LIST_NAME))
+            modules.extend(getattr(_module, settings.HEXDI_MODULES_LIST_NAME))
         self._load_modules(modules)
 
 
