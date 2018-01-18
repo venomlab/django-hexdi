@@ -1,6 +1,6 @@
 import hexdi
 from djhexdi import settings
-from hexdi.utils import load_module
+from hexdi.utils import load_module, get_module_if_exists
 
 
 class AbstractStrategy:
@@ -21,7 +21,7 @@ class Static(AbstractStrategy):
         modules = list()
         modules.extend(settings.HEXDI_MODULES_LIST or [])
         file = settings.HEXDI_MODULE
-        if file:
+        if file and get_module_if_exists(file):
             _module = load_module(file)
             modules.extend(getattr(_module, settings.HEXDI_MODULES_LIST_NAME))
         self._load_modules(modules)
