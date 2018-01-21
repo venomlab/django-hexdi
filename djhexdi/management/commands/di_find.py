@@ -60,7 +60,10 @@ class Command(BaseCommand):
             self.stdout.write(modules_text)
 
     def __check_dir_exists_for_module(self, filename, auto_create):
-        path = filename.rsplit('/', 1)[0]
+        if '/' in filename:
+            path, module_name = filename.rsplit('/', 1)
+        else:
+            path = ''
         path_parts = path.split('/')
         path_acc = ''
         for part in path_parts:
