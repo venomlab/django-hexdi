@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./copyright -c copyright.json ../hexdi/
+./copyright -c copyright.json ../djhexdi/
