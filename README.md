@@ -36,11 +36,11 @@ File concrete_services.py contains implementations of services stored in service
 
 forms.py, views.py, and so on use services.py interfaces and inject these interfaces implementations using **hexdi** injections.
   
-So, there are 3 ways to set up hexdi on Django for static or automatic implementations loading:
+So, there are several ways to set up **hexdi** on Django for static or automatic implementations loading:
 
 ## Dummy strategy
 
-This is the **default strategy** that does nothing on application startup.
+This is the **default strategy** that does nothing on application startup. You really should use something other!
 
 ```python
 HEXDI_STRATEGY = 'djhexdi.strategy.Dummy'
@@ -48,7 +48,7 @@ HEXDI_STRATEGY = 'djhexdi.strategy.Dummy'
 
 ## Static strategy
 
-This is the simplest and static strategy of implementations discovery using modules list of implementations.
+This is the simplest and static strategy of implementations discovery using modules list that contain bindings.
 
 Use next setting to set up this strategy:
 
@@ -56,7 +56,7 @@ Use next setting to set up this strategy:
 HEXDI_STRATEGY = 'djhexdi.strategy.Static'
 ```
 
-Use the special setting to provide dotted path of modules where implementations contained:
+Use the special setting to provide dotted path of modules where bindings are presented:
 
 ```python
 HEXDI_MODULES_LIST = [
@@ -71,11 +71,11 @@ You can specify a module that contains this list:
 HEXDI_MODULE = '__hexdi__'
 ```
 
-Use this discovery when you are sure that there is no other place with implementations and your dependency modules don't use hexdi. 
+Use this discovery when you are sure that there is no other place with bindings and your dependency modules don't use hexdi, so on. 
 
 ## Fully automatic strategy
 
-This is the dynamic strategy of implementations module finding working on application startup.
+This is the dynamic strategy of modules finding which works on application startup.
 
 Use next setting to set up this strategy: 
 
@@ -111,7 +111,7 @@ HEXDI_EXCLUDE_MODULES = [
 ]
 ```
 
-Use this strategy when you have no idea what modules should be loaded and what dependencies use hexdi.
+Use this strategy if you can **rely on module-finder** or your dependencies are using **hexdi**, or something.
 
 But keep in mind that **this strategy may slowdown your application startup** if you have a huge number of modules/dependencies.
 
