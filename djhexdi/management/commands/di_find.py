@@ -6,27 +6,28 @@ from djhexdi import settings
 
 class Command(BaseCommand):
     def add_arguments(self, parser):
-        parser.add_argument('-f',
-                            dest='filename',
-                            metavar='filename',
+        parser.add_argument('-m',
+                            dest='modulepath',
+                            metavar='modulepath',
                             default=settings.HEXDI_MODULE,
                             type=str,
-                            help='filename to store finder results')
+                            help='Optional. Dotted path to module that stores finder results.\n' +
+                                 'Used HEXDI_MODULE({}) setting by default.'.format(settings.HEXDI_MODULE))
         parser.add_argument('--auto',
                             const=True,
                             default=False,
                             nargs='?',
                             metavar='',
-                            help='automatically create packages for module')
+                            help='Optional. Automatically create packages tree for module.')
 
     def handle(self, *args, **options):
         finder = hexdi.get_finder(settings.HEXDI_FINDER_PACKAGES)
         modules = finder.find()
         modules_text = "{} = [\n{}\n]".format(
-            settings.HEXDI_MODULES_LIST_NAME,
+            settings.HEXDI_MODULE_LIST_NAME,
             ",\n".join(["    \'{}\'".format(m) for m in modules])
         )
-        raw_module_name = options['filename']
+        raw_module_name = options['modulepath']
         if raw_module_name:
             filename = self.__sanitinze_hexdi_module_name(raw_module_name)
             self.__check_dir_exists_for_module(filename, options['auto'])
