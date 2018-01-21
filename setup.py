@@ -9,8 +9,8 @@ with open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='django-hexdi',
-    version='0.2.0a1',
-    packages=find_packages(include=('djhexdi',)),
+    version='0.2.0a2',
+    packages=find_packages(include=('djhexdi', 'djhexdi.management', 'djhexdi.management.commands',), ),
     classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha
