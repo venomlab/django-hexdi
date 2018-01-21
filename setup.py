@@ -9,14 +9,14 @@ with open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='django-hexdi',
-    version='0.2.1a1',
+    version='0.2.1b1',
     packages=find_packages(include=('djhexdi', 'djhexdi.management', 'djhexdi.management.commands',), ),
     classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
@@ -36,5 +36,5 @@ setup(
     author_email='zibertscrem@gmail.com',
     description='Highly extensible Dependency injection framework for humans. Django integration',
     long_description=long_description,
-    install_requires=['typing', 'hexdi']
+    install_requires=['typing', 'hexdi==0.2.1']
 )
