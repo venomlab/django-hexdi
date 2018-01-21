@@ -12,6 +12,8 @@ Created for using with django-based applications.
 pip install django-hexdi
 ```
 
+Keep in mind that we really recommend to use the same version of hexdi that django-hexdi has
+
 # Usage
 
 First step is to add `djhexdi` to your `INSTALLED_APPS` setting.
