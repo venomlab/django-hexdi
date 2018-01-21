@@ -9,7 +9,7 @@ with open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='django-hexdi',
-    version='0.1.0a1',
+    version='0.2.0a1',
     packages=find_packages(include=('djhexdi',)),
     classifiers=[
         # How mature is this project? Common values are
